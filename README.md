@@ -1,4 +1,4 @@
-# Products Catalog Clean Arch
+# Sabido Magro Academia 
 
 ## ASP.NET Core Based 
 
