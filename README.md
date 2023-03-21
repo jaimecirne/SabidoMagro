@@ -13,5 +13,5 @@ This template is a simple startup project to start with Clean Architecture. Usin
 
 * Open solution in Visual Studio or Visual Studio Code
 * Open terminal and using command update-database to create a database on SQL Server and population the tables.
-* Run the application ProductsCatalogCleanArch.
+* Run the application .
 
