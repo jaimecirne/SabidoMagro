@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
-    class Workout : Entity
+    public sealed class Workout : Entity
     {
         public String Label { get; set; }
         public List<WorkoutActivity> WorkoutActivities { get; set; }
-
     }
 }

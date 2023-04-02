@@ -6,13 +6,13 @@ using Xunit;
 
 namespace SabidoMagroAcademia.Domain.Tests
 {
-    public class ProductUnitTest1
+    public class ClientUnitTest1
     {
         [Fact]
         public void CreateProduct_WithValidParameters_ResultObjectValidState()
         {
-            Action action = () => new Client(1, "Product Name", "Product Description", 9.99m,
-                99, "product image");
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
+
             action.Should()
                 .NotThrow<DomainExceptionValidation>();
         }
@@ -20,8 +20,8 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void CreateProduct_NegativeIdValue_DomainExceptionInvalidId()
         {
-            Action action = () => new Client(-1, "Product Name", "Product Description", 9.99m,
-                99, "product image");
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
+
 
             action.Should().Throw<DomainExceptionValidation>()
                 .WithMessage("Invalid Id value.");
@@ -30,8 +30,8 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void CreateProduct_ShortNameValue_DomainExceptionShortName()
         {
-            Action action = () => new Client(1, "Pr", "Product Description", 9.99m, 99,
-                "product image");
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
+
             action.Should().Throw<DomainExceptionValidation>()
                  .WithMessage("Invalid name, too short, minimum 3 characters");
         }
@@ -39,12 +39,7 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void CreateProduct_LongImageName_DomainExceptionLongImageName()
         {
-            Action action = () => new Client(1, "Product Name", "Product Description", 9.99m,
-                99, "product image toooooooooooooooooooooooooooooooooooooooooooo" +
-                    " looooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-                    "ooooooooooooooooooooooooooooooooogggggggggggggggggggggggggg" +
-                    "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg" +
-                    "ggggggggggggggggggggg");
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
 
             action.Should()
                 .Throw<DomainExceptionValidation>()
@@ -54,29 +49,29 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void CreateProduct_WithNullImageName_NoDomainException()
         {
-            Action action = () => new Client(1, "Product Name", "Product Description", 9.99m, 99, null);
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
+
             action.Should().NotThrow<DomainExceptionValidation>();
         }
 
         [Fact]
         public void CreateProduct_WithNullImageName_NoNullReferenceException()
         {
-            Action action = () => new Client(1, "Product Name", "Product Description", 9.99m, 99, null);
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
             action.Should().NotThrow<NullReferenceException>();
         }
 
         [Fact]
         public void CreateProduct_WithEmptyImageName_NoDomainException()
         {
-            Action action = () => new Client(1, "Product Name", "Product Description", 9.99m, 99, "");
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
             action.Should().NotThrow<DomainExceptionValidation>();
         }
 
         [Fact]
         public void CreateProduct_InvalidPriceValue_DomainException()
         {
-            Action action = () => new Client(1, "Product Name", "Product Description", -9.99m,
-                99, "");
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
             action.Should().Throw<DomainExceptionValidation>()
                  .WithMessage("Invalid price value");
         }
@@ -85,8 +80,8 @@ namespace SabidoMagroAcademia.Domain.Tests
         [InlineData(-5)]//usando atributos no teste
         public void CreateProduct_InvalidStockValue_ExceptionDomainNegativeValue(int value)
         {
-            Action action = () => new Client(1, "Pro", "Product Description", 9.99m, value,
-                "product image");
+            Action action = () => new Client(new User(1, "Product Name", "jaime@", "macho", DateTime.Now, "imagem"));
+
             action.Should().Throw<DomainExceptionValidation>()
                    .WithMessage("Invalid stock value");
         }

@@ -7,23 +7,29 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
-    class Avaliation : Entity
+    public sealed class Avaliation : Entity
     {
+        public Client Client { get; set; }
         public String Label { get; set; }
         public decimal Weight { get; private set; }
         public int Height { get; private set; }
         public String CoachsComments { get; set; }
         public Manager Coach { get; set; }
-        public int IMC { get; set; }
         public DateTime Date { get; set; }
+        public int ClientId { get; set; }
+        public int CoachId { get; set; }
 
-
-        public Avaliation(String label, decimal weight, int height, String coachsComments, Manager coach, int imc)
+        public Avaliation()
         {
-            ValidateDomain(label, weight, height, coachsComments, coach, imc);
+
         }
 
-        private void ValidateDomain(String label, decimal weight, int height, String coachsComments, Manager coach, int imc)
+        public Avaliation(String label, decimal weight, int height, String coachsComments, Manager coach)
+        {
+            ValidateDomain(label, weight, height, coachsComments, coach);
+        }
+
+        private void ValidateDomain(String label, decimal weight, int height, String coachsComments, Manager coach)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(label),
                 "Invalid label. Label is required");
@@ -46,7 +52,6 @@ namespace SabidoMagroAcademia.Domain.Entities
             Height = height;
             CoachsComments = coachsComments;
             Coach = coach;
-            IMC = imc;
             Date = DateTime.Now;
         }
 

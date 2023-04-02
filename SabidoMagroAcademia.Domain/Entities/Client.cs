@@ -1,52 +1,44 @@
 ﻿using SabidoMagroAcademia.Domain.Validation;
+using System.Collections.Generic;
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
     public sealed class Client : Entity
     {
-        public User User { get; private set; }
+        public User User { get; set; }
+        public List<Avaliation> Avaliations { get; set; }
+        public List<DayOfTrain> DayOfTrains { get; set; }
+        public List<ClientWorkout> ClientWorkouts { get; set; }
 
-        public Client(string name, string description, decimal price, int stock, string image)
+        public Client()
         {
-            ValidateDomain(name, description, price, stock, image);
+
         }
 
-        public Client(int id, string name, string description, decimal weight, int height, string image)
+        public Client(User user)
         {
-            DomainExceptionValidation.When(id < 0, "Invalid Id value.");
-            Id = id;
-            ValidateDomain(name, description, weight, height, image);
+            ValidateDomain(user);
         }
 
-        public void Update(string name, string description, decimal weight, int height, string image, int planId)
+        public Client(User user, List<Avaliation> avaliations, List<DayOfTrain> dayOfTrains, List<ClientWorkout> clientWorkouts)
         {
-            ValidateDomain(name, description, weight, height, image);
-            PlanId = planId;
+            ValidateDomain(user);
+            Avaliations = avaliations;
+            DayOfTrains = dayOfTrains;
+            ClientWorkouts = clientWorkouts;
         }
-        //valida as regras de negócio para cada atributo
-        private void ValidateDomain(string name, string description, decimal weight, int height, string image)
+
+        public void Update(User user, List<Avaliation> avaliations, List<DayOfTrain> dayOfTrains, List<ClientWorkout> clientWorkouts)
         {
-            DomainExceptionValidation.When(string.IsNullOrEmpty(name),
-                "Invalid name. Name is required");
+            ValidateDomain(user);
+            Avaliations = avaliations;
+            DayOfTrains = dayOfTrains;
+            ClientWorkouts = clientWorkouts;
+        }
 
-            DomainExceptionValidation.When(name.Length < 3,
-                "Invalid name, too short, minimum 3 characters");
-
-            DomainExceptionValidation.When(string.IsNullOrEmpty(description),
-                "Invalid description. Description is required");
-
-            DomainExceptionValidation.When(description.Length < 5,
-                "Invalid description, too short, minimum 5 characters");
-
-            DomainExceptionValidation.When(weight < 0, "Invalid price value");
-
-            DomainExceptionValidation.When(height < 0, "Invalid stock value");
-
-            //comando ? avalia o valor de imagen, se for null, o resultado será null, caso contrário ele testa a expressão.
-            //O objetivo e evitar que gere uma exceção NullReferenceException.
-            DomainExceptionValidation.When(image?.Length > 250,
-                "Invalid image name, too long, maximum 250 characters");
-
+        private void ValidateDomain(User user)
+        {
+            User = user;
         }
 
     }

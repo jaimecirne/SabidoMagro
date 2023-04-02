@@ -6,7 +6,7 @@ using Xunit;
 
 namespace SabidoMagroAcademia.Domain.Tests
 {
-    public class planUnitTest1
+    public class PlanUnitTest1
     {
         //DisplayName renomeia o teste
         [Fact(DisplayName = "Create plan With Valid State")]
@@ -14,7 +14,7 @@ namespace SabidoMagroAcademia.Domain.Tests
         {
             //criando uma instancia da classe plan
             //esperasse que o teste não lance uma exceção no dominio
-            Action action = () => new Plan(1, "plan Name ");
+            Action action = () => new Plan(1, "plan Name ", 1);
             action.Should()
                 .NotThrow<DomainExceptionValidation>();
         }
@@ -22,7 +22,7 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void Createplan_NegativeIdValue_DomainExceptionInvalidId()
         {
-            Action action = () => new Plan(-1, "plan Name ");
+            Action action = () => new Plan(-1, "plan Name ", 1);
             action.Should()
                 .Throw<DomainExceptionValidation>()//espera-se que lance uma exceção
                  .WithMessage("Invalid Id value.");//teste valida se a mensagem de erro está como foi definida na classe
@@ -31,7 +31,7 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void Createplan_ShortNameValue_DomainExceptionShortName()
         {
-            Action action = () => new Plan(1, "Ca");//testa regra de negócio (não pode ser menor que 3 caracteres)
+            Action action = () => new Plan(1, "Ca", 1);//testa regra de negócio (não pode ser menor que 3 caracteres)
             action.Should()
                 .Throw<DomainExceptionValidation>()
                    .WithMessage("Invalid name, too short, minimum 3 characters");
@@ -40,7 +40,7 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void Createplan_MissingNameValue_DomainExceptionRequiredName()
         {
-            Action action = () => new Plan(1, "");
+            Action action = () => new Plan(1, "",1);
             action.Should()
                 .Throw<DomainExceptionValidation>()
                 .WithMessage("Invalid name.Name is required");
@@ -49,7 +49,7 @@ namespace SabidoMagroAcademia.Domain.Tests
         [Fact]
         public void Createplan_WithNullNameValue_DomainExceptionInvalidName()
         {
-            Action action = () => new Plan(1, null);
+            Action action = () => new Plan(1, null,1);
             action.Should()
                 .Throw<DomainExceptionValidation>();
         }

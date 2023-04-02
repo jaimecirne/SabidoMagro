@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
-    class DayOfTrain: Entity
+    public sealed class DayOfTrain : Entity
     {
         public DateTime Day { get; set; }
         public Manager Coach { get; set; }
         public Workout WorkoutInDay { get; set; }
         public Client Client { get; set; }
+
+        public int WorkoutId { get; set; }
+
+        public DayOfTrain()
+        {
+
+        }
 
         public DayOfTrain(Manager coach, Workout workoutInDay, Client client)
         {

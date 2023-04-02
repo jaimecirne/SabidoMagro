@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
-    class Contract: Entity
+    public sealed class Contract : Entity
     {
         public Plan Plan { get; set; }
         public Client Client { get; set; }
@@ -14,5 +14,6 @@ namespace SabidoMagroAcademia.Domain.Entities
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
         public Boolean Active { get; set; }
+        public int PlanId { get; set; }
     }
 }

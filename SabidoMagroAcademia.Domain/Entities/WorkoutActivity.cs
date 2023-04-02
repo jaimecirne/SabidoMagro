@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
-    class WorkoutActivity
+    public sealed class WorkoutActivity: Entity
     {
         public int Order { get; set; }
         public int Sets { get; set; }

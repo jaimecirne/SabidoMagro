@@ -4,14 +4,13 @@ using SabidoMagroAcademia.Domain.Entities;
 
 namespace SabidoMagroAcademia.Infra.Data.EntitiesConfiguration
 {
-    class ClientConfiguration : IEntityTypeConfiguration<Client>
+    class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<Client> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
             builder.HasKey(t => t.Id);
-
-            //configura um relacionamento um para muitos entre plan e Products
-            builder.HasMany(e => e.DayOfTrains).WithOne();
+            builder.Property(p => p.Label).HasMaxLength(100).IsRequired();
+            
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
-    class Role
+    public sealed class Role: Entity
     {
         public String Label { get; set; }
         public String Key { get; set; }

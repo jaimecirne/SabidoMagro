@@ -30,7 +30,6 @@ namespace SabidoMagroAcademia.Domain.Entities
         }
         public ICollection<Client> Clients { get; set; }
 
-        //se não passar na validação uma exceção será gerada
         private void ValidateDomain(string name, double price)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
@@ -40,7 +39,6 @@ namespace SabidoMagroAcademia.Domain.Entities
                "Invalid name, too short, minimum 3 characters");
 
             DomainExceptionValidation.When(price < 0, "Invalid Price value.");
-
 
             Name = name;
             Price = price;

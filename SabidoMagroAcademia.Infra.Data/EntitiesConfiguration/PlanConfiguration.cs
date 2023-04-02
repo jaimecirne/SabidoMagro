@@ -11,10 +11,12 @@ namespace SabidoMagroAcademia.Infra.Data.EntitiesConfiguration
 
             builder.HasKey(t => t.Id);
             builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
+            builder.Property(p => p.Price).HasPrecision(10, 2).IsRequired();
+
 
             builder.HasData(
-              new Plan(1, "Plano pé rachado"),
-              new Plan(2, "Plano Chique")
+              new Plan(1, "Plano pé rachado", 100),
+              new Plan(2, "Plano Chique", 1000)
             );
         }
     }
