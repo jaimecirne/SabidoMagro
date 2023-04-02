@@ -10,27 +10,28 @@ namespace SabidoMagroAcademia.Domain.Entities
     public sealed class Plan : Entity
     {
         public string Name { get; private set; }
+        public double Price { get; set; }
 
-        public Plan(string name)
+        public Plan(string name, double price )
         {
-            ValidateDomain(name);
+            ValidateDomain(name, price);
         }
 
-        public Plan(int id, string name)
+        public Plan(int id, string name, double price)
         {
             DomainExceptionValidation.When(id < 0, "Invalid Id value.");
             Id = id;
-            ValidateDomain(name);
+            ValidateDomain(name, price);
         }
 
-        public void Update(string name)
+        public void Update(string name, double price)
         {
-            ValidateDomain(name);
+            ValidateDomain(name, price);
         }
         public ICollection<Client> Clients { get; set; }
 
         //se não passar na validação uma exceção será gerada
-        private void ValidateDomain(string name)
+        private void ValidateDomain(string name, double price)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
                 "Invalid name.Name is required");
@@ -38,7 +39,11 @@ namespace SabidoMagroAcademia.Domain.Entities
             DomainExceptionValidation.When(name.Length < 3,
                "Invalid name, too short, minimum 3 characters");
 
+            DomainExceptionValidation.When(price < 0, "Invalid Price value.");
+
+
             Name = name;
+            Price = price;
         }
     }
 }

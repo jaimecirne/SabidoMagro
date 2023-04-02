@@ -2,14 +2,9 @@
 
 namespace SabidoMagroAcademia.Domain.Entities
 {
-    //atributo sealed impede que outra classe possa herdar de Product
     public sealed class Client : Entity
     {
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public decimal Weight { get; private set; }
-        public int Height { get; private set; }
-        public string Image { get; private set; }
+        public User User { get; private set; }
 
         public Client(string name, string description, decimal price, int stock, string image)
         {
@@ -52,15 +47,7 @@ namespace SabidoMagroAcademia.Domain.Entities
             DomainExceptionValidation.When(image?.Length > 250,
                 "Invalid image name, too long, maximum 250 characters");
 
-            Name = name;
-            Description = description;
-            Weight = weight;
-            Height = height;
-            Image = image;
-
         }
 
-        public int PlanId { get; set; }
-        public Plan Plan { get; set; }
     }
 }
