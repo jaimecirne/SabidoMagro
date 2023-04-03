@@ -9,7 +9,7 @@ namespace SabidoMagroAcademia.Application.Products.Commands
         public User User { get; private set; }
         public List<Avaliation> Avaliations { get; set; }
         public List<DayOfTrain> DayOfTrains { get; set; }
-        public List<ActivityWorkout> ActivityWorkouts { get; set; }
+        public List<WorkoutActivity> ActivityWorkouts { get; set; }
 
     }
 }

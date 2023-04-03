@@ -24,14 +24,12 @@ namespace SabidoMagroAcademia.Infra.Data.Repositories
 
         public async Task<Role> GetByIdAsync(int? id)
         {
-            //eager loading
-            return await _roleContext.Roles.Include(c => c.RoleWorkouts).Include(c => c.Avaliations).Include(c => c.DayOfTrains)
-                .SingleOrDefaultAsync(p => p.Id == id);
+            return await _roleContext.Role.SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Role>> GetRolesAsync()
         {
-            return await _roleContext.Roles.ToListAsync();
+            return await _roleContext.Role.ToListAsync();
         }
 
         public async Task<Role> RemoveAsync(Role role)

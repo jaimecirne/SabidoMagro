@@ -24,9 +24,7 @@ namespace SabidoMagroAcademia.Infra.Data.Repositories
 
         public async Task<Resource> GetByIdAsync(int? id)
         {
-            //eager loading
-            return await _resourceContext.Resources.Include(c => c.ResourceWorkouts).Include(c => c.Avaliations).Include(c => c.DayOfTrains)
-                .SingleOrDefaultAsync(p => p.Id == id);
+            return await _resourceContext.Resources.SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Resource>> GetResourcesAsync()

@@ -24,9 +24,7 @@ namespace SabidoMagroAcademia.Infra.Data.Repositories
 
         public async Task<ClientWorkout> GetByIdAsync(int? id)
         {
-            //eager loading
-            return await _clientworkoutContext.ClientWorkouts.Include(c => c.ClientWorkoutWorkouts).Include(c => c.Avaliations).Include(c => c.DayOfTrains)
-                .SingleOrDefaultAsync(p => p.Id == id);
+            return await _clientworkoutContext.ClientWorkouts.SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<ClientWorkout>> GetClientWorkoutsAsync()

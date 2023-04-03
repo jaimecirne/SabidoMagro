@@ -24,9 +24,7 @@ namespace SabidoMagroAcademia.Infra.Data.Repositories
 
         public async Task<Avaliation> GetByIdAsync(int? id)
         {
-            //eager loading
-            return await _avaliationContext.Avaliations.Include(c => c.AvaliationWorkouts).Include(c => c.Avaliations).Include(c => c.DayOfTrains)
-                .SingleOrDefaultAsync(p => p.Id == id);
+            return await _avaliationContext.Avaliations.SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Avaliation>> GetAvaliationsAsync()

@@ -24,9 +24,7 @@ namespace SabidoMagroAcademia.Infra.Data.Repositories
 
         public async Task<DayOfTrain> GetByIdAsync(int? id)
         {
-            //eager loading
-            return await _dayoftrainContext.DayOfTrains.Include(c => c.DayOfTrainWorkouts).Include(c => c.Avaliations).Include(c => c.DayOfTrains)
-                .SingleOrDefaultAsync(p => p.Id == id);
+            return await _dayoftrainContext.DayOfTrains.SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<DayOfTrain>> GetDayOfTrainsAsync()
