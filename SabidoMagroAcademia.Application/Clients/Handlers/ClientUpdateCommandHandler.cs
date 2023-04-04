@@ -29,7 +29,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
             else
             {
                 client.Update(request.User, request.Avaliations, request.DayOfTrains,
-                                request.ClientWorkouts);
+                                request.ClientWorkouts, request.Id);
                 return await _clientRepository.UpdateAsync(client);
             }
 

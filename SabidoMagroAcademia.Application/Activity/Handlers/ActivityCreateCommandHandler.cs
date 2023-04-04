@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<Activity> Handle(ActivityCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var activity = new Activity(request.User);
+            var activity = new Activity(request.Label);
             
             if (activity == null)
             {

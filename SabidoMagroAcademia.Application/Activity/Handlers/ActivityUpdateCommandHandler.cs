@@ -11,10 +11,10 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
     public class ActivityUpdateCommandHandler : IRequestHandler<ActivityUpdateCommand, Activity>
     {
         private readonly IActivityRepository _activityRepository;
-        public ActivityUpdateCommandHandler(IActivityRepository productRepository)
+        public ActivityUpdateCommandHandler(IActivityRepository activityRepository)
         {
-            _activityRepository = productRepository ??//caso seja null, retorna uma exceção
-            throw new ArgumentNullException(nameof(productRepository));
+            _activityRepository = activityRepository ??//caso seja null, retorna uma exceção
+            throw new ArgumentNullException(nameof(activityRepository));
         }
 
         public async Task<Activity> Handle(ActivityUpdateCommand request, CancellationToken cancellationToken)
@@ -28,8 +28,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
 
             else
             {
-                activity.Update(request.User, request.Avaliations, request.DayOfTrains,
-                                request.ActivityWorkouts);
+                activity.Update(request.Id, request.Label);
                 return await _activityRepository.UpdateAsync(activity);
             }
 

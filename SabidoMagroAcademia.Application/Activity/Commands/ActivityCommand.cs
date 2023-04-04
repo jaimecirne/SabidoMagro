@@ -6,10 +6,7 @@ namespace SabidoMagroAcademia.Application.Products.Commands
 {
     public abstract class ActivityCommand : IRequest<Activity>
     {
-        public User User { get; private set; }
-        public List<Avaliation> Avaliations { get; set; }
-        public List<DayOfTrain> DayOfTrains { get; set; }
-        public List<WorkoutActivity> ActivityWorkouts { get; set; }
+        public string Label { get; set; }
 
     }
 }

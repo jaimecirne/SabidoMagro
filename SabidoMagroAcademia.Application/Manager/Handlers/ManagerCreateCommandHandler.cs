@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<Manager> Handle(ManagerCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var manager = new Manager(request.User);
+            var manager = new Manager(request.User, request.Avaliations, request.Roles, request.ClientWorkouts);
             
             if (manager == null)
             {

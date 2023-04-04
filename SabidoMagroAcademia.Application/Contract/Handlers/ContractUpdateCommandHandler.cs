@@ -28,8 +28,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
 
             else
             {
-                contract.Update(request.User, request.Avaliations, request.DayOfTrains,
-                                request.ContractWorkouts);
+                contract.Update(request.Id, request.Plan, request.Client, request.TotalPrice, request.Start, request.End, request.Active);
                 return await _contractRepository.UpdateAsync(contract);
             }
 

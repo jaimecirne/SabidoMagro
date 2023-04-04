@@ -52,9 +52,26 @@ namespace SabidoMagroAcademia.Infra.IoC
             //AddScoped é recomendação para aplicações web
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IPlanRepository, PlanRepository>();
+            services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<IAvaliationRepository, AvaliationRepository>();
+            services.AddScoped<IClientWorkoutRepository, ClientWorkoutRepository>();
+            services.AddScoped<IContractRepository, ContractRepository>();
+            services.AddScoped<IDayOfTrainRepository, DayOfTrainRepository>();
+            services.AddScoped<IManagerRepository, ManagerRepository>();
+            services.AddScoped<IResourceRepository, ResourceRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+
 
             services.AddScoped<IClientService, ClientService>();
             services.AddScoped<IPlanService, planService>();
+            services.AddScoped<IActivityService, ActivityService>();
+            services.AddScoped<IAvaliationService, AvaliationService>();
+            services.AddScoped<IClientWorkoutService, ClientWorkoutService>();
+            services.AddScoped<IContractService, ContractService>();
+            services.AddScoped<IDayOfTrainService, DayOfTrainService>();
+            services.AddScoped<IManagerService, ManagerService>();
+            services.AddScoped<IResourceService, ResourceService>();
+            services.AddScoped<IRoleService, RoleService>();
 
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();

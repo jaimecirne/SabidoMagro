@@ -14,5 +14,10 @@ namespace SabidoMagroAcademia.Domain.Entities
         public int Rest { get; set; }
         public Workout Workout { get; set; }
         public Activity Activity { get; set; }
+
+        public WorkoutActivity()
+        {
+
+        }
     }
 }

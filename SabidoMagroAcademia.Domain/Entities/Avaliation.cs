@@ -10,10 +10,10 @@ namespace SabidoMagroAcademia.Domain.Entities
     public sealed class Avaliation : Entity
     {
         public Client Client { get; set; }
-        public String Label { get; set; }
+        public string Label { get; set; }
         public decimal Weight { get; private set; }
         public int Height { get; private set; }
-        public String CoachsComments { get; set; }
+        public string CoachsComments { get; set; }
         public Manager Coach { get; set; }
         public DateTime Date { get; set; }
         public int ClientId { get; set; }
@@ -55,5 +55,10 @@ namespace SabidoMagroAcademia.Domain.Entities
             Date = DateTime.Now;
         }
 
+        public void Update(int id, string label, decimal weight, int height, String coachsComments, Manager coach)
+        {
+            ValidateDomain(label,  weight,  height,  coachsComments, coach);
+            Id = Id;
+        }
     }
 }

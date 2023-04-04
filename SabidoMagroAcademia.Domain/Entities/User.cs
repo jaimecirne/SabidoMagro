@@ -12,6 +12,10 @@ namespace SabidoMagroAcademia.Domain.Entities
         public DateTime Born { get; private set; }
         public string Image { get; private set; }
 
+        public User()
+        {
+
+        }
 
         public User(string name, string email, string gender, DateTime born, string image)
         {

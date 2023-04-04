@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<DayOfTrain> Handle(DayOfTrainCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var dayoftrain = new DayOfTrain(request.User);
+            var dayoftrain = new DayOfTrain(request.Coach, request.WorkoutInDay, request.Client);
             
             if (dayoftrain == null)
             {

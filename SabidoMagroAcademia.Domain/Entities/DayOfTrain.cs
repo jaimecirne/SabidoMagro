@@ -34,5 +34,13 @@ namespace SabidoMagroAcademia.Domain.Entities
             Client = client;
         }
 
+        
+
+        public void Update(int id, Manager coach, Workout workoutInDay, Client client)
+        {
+            ValidateDomain(coach, workoutInDay, client);
+            Id = id;
+        }
+
     }
 }

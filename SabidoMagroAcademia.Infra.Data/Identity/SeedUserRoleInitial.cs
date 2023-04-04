@@ -82,6 +82,13 @@ namespace SabidoMagroAcademia.Infra.Data.Identity
                 role.NormalizedName = "ADMIN";
                 IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
             }
+            if (!_roleManager.RoleExistsAsync("Coach").Result)
+            {
+                IdentityRole role = new IdentityRole();
+                role.Name = "Coach";
+                role.NormalizedName = "COACH";
+                IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
+            }
         }
     }
 }

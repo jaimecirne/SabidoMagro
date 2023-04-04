@@ -1,15 +1,17 @@
 using MediatR;
 using SabidoMagroAcademia.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace SabidoMagroAcademia.Application.Products.Commands
 {
     public abstract class ClientWorkoutCommand : IRequest<ClientWorkout>
     {
-        public User User { get; private set; }
-        public List<Avaliation> Avaliations { get; set; }
-        public List<DayOfTrain> DayOfTrains { get; set; }
-        public List<ClientWorkout> ClientWorkouts { get; set; }
+        public Client Client { get; set; }
+        public Manager Coach { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public List<Workout> WorkoutDefaults { get; set; }
 
     }
 }

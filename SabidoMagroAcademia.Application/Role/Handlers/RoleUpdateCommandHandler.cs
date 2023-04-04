@@ -28,8 +28,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
 
             else
             {
-                role.Update(request.User, request.Avaliations, request.DayOfTrains,
-                                request.RoleWorkouts);
+                role.Update(request.Id, request.Label, request.Key);
                 return await _roleRepository.UpdateAsync(role);
             }
 

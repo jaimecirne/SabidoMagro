@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<Contract> Handle(ContractCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var contract = new Contract(request.User);
+            var contract = new Contract(request.Plan, request.Client, request.TotalPrice, request.Start, request.End, request.Active);
             
             if (contract == null)
             {

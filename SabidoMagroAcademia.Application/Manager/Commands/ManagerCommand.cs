@@ -8,8 +8,9 @@ namespace SabidoMagroAcademia.Application.Products.Commands
     {
         public User User { get; private set; }
         public List<Avaliation> Avaliations { get; set; }
+        public List<Role> Roles { get; set; }
         public List<DayOfTrain> DayOfTrains { get; set; }
-        public List<ClientWorkout> ManagerWorkouts { get; set; }
+        public List<ClientWorkout> ClientWorkouts { get; set; }
 
     }
 }

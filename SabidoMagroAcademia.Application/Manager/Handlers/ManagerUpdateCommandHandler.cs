@@ -28,8 +28,8 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
 
             else
             {
-                manager.Update(request.User, request.Avaliations, request.DayOfTrains,
-                                request.ManagerWorkouts);
+                manager.Update(request.Id, request.User, request.Avaliations, request.Roles,
+                                request.ClientWorkouts);
                 return await _managerRepository.UpdateAsync(manager);
             }
 

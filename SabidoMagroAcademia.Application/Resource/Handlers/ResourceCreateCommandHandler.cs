@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<Resource> Handle(ResourceCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var resource = new Resource(request.User);
+            var resource = new Resource(request.Label, request.Key);
             
             if (resource == null)
             {

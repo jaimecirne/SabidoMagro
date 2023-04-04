@@ -26,9 +26,10 @@ namespace SabidoMagroAcademia.Domain.Entities
             Avaliations = avaliations;
             DayOfTrains = dayOfTrains;
             ClientWorkouts = clientWorkouts;
+            
         }
 
-        public void Update(User user, List<Avaliation> avaliations, List<DayOfTrain> dayOfTrains, List<ClientWorkout> clientWorkouts)
+        public void Update(User user, List<Avaliation> avaliations, List<DayOfTrain> dayOfTrains, List<ClientWorkout> clientWorkouts, int id)
         {
             ValidateDomain(user);
             Avaliations = avaliations;

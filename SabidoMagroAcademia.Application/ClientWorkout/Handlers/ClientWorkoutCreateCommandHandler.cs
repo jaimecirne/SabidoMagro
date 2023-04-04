@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<ClientWorkout> Handle(ClientWorkoutCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var clientworkout = new ClientWorkout(request.User);
+            var clientworkout = new ClientWorkout(request.Client, request.Start, request.End, request.Coach);
             
             if (clientworkout == null)
             {

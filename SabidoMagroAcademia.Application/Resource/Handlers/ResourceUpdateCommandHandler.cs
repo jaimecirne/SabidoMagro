@@ -28,8 +28,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
 
             else
             {
-                resource.Update(request.User, request.Avaliations, request.DayOfTrains,
-                                request.ResourceWorkouts);
+                resource.Update(request.Id, request.Label, request.Key);
                 return await _resourceRepository.UpdateAsync(resource);
             }
 

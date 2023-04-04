@@ -1,15 +1,19 @@
 using MediatR;
 using SabidoMagroAcademia.Domain.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace SabidoMagroAcademia.Application.Products.Commands
 {
     public abstract class ContractCommand : IRequest<Contract>
     {
-        public User User { get; private set; }
-        public List<Avaliation> Avaliations { get; set; }
-        public List<DayOfTrain> DayOfTrains { get; set; }
-        public List<ClientWorkout> ClientWorkout { get; set; }
+        public Plan Plan { get; set; }
+        public Client Client { get; set; }
+        public double TotalPrice { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public bool Active { get; set; }
+        public int PlanId { get; set; }
 
     }
 }

@@ -12,6 +12,11 @@ namespace SabidoMagroAcademia.Domain.Entities
         public string Name { get; private set; }
         public double Price { get; set; }
 
+        public Plan()
+        {
+
+        }
+
         public Plan(string name, double price )
         {
             ValidateDomain(name, price);

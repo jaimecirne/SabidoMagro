@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<Role> Handle(RoleCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var role = new Role(request.User);
+            var role = new Role(request.Label, request.Key);
             
             if (role == null)
             {

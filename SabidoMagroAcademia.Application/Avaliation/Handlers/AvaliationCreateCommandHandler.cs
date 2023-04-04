@@ -19,7 +19,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
         public async Task<Avaliation> Handle(AvaliationCreateCommand request,
             CancellationToken cancellationToken)
         {
-            var avaliation = new Avaliation(request.User);
+            var avaliation = new Avaliation(request.Label, request.Weight, request.Height, request.CoachsComments, request.Coach) ;
             
             if (avaliation == null)
             {

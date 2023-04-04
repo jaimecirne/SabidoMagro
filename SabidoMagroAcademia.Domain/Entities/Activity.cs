@@ -11,13 +11,36 @@ namespace SabidoMagroAcademia.Domain.Entities
     {
         public string Label { get; set; }
 
-        public Activity(int id, String label)
+        public Activity()
         {
+
+        }
+
+        public Activity(int id, string label)
+        {
+            ValidateDomain(label);
             DomainExceptionValidation.When(id < 0, "Invalid Id value.");
-            DomainExceptionValidation.When(string.IsNullOrEmpty(label), "Invalid Label value.");
 
             Id = id;
+        }
+
+        public Activity(String label)
+        {
+            ValidateDomain(label);
+        }
+
+        private void ValidateDomain(String label) {
+            DomainExceptionValidation.When(string.IsNullOrEmpty(label), "Invalid Label value.");
             Label = label;
         }
+
+        public void Update(int id, String label)
+        {
+            ValidateDomain(label);
+            DomainExceptionValidation.When(id < 0, "Invalid Id value.");
+
+            Id = id;
+        }
+
     }
 }
