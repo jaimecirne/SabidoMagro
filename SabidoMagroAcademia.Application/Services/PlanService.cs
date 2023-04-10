@@ -11,21 +11,21 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.Application.Services
 {
-    public class planService : IPlanService
+    public class PlanService : IPlanService
     {
         private IPlanRepository _planRepository;
         private readonly IMapper _mapper;
 
-        public planService(IPlanRepository planRepository, IMapper mapper)
+        public PlanService(IPlanRepository planRepository, IMapper mapper)
         {
             _planRepository = planRepository;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<PlanDTO>> GetCategories()
+        public async Task<IEnumerable<PlanDTO>> GetPlans()
         {
-            var plansEntity = await _planRepository.GetPlans();//retorta lista de objetos da entidade
-            return _mapper.Map<IEnumerable<PlanDTO>>(plansEntity);//faz o mapeamento da entidade para o DTO
+            var plansEntity = await _planRepository.GetPlans();
+            return _mapper.Map<IEnumerable<PlanDTO>>(plansEntity);
         }
 
         public async Task<PlanDTO> GetById(int? id)
@@ -36,7 +36,7 @@ namespace SabidoMagroAcademia.Application.Services
 
         public async Task Add(PlanDTO planDto)
         {
-            var planEntity = _mapper.Map<Plan>(planDto);//faz o mapeamento reverso DTO/entidade
+            var planEntity = _mapper.Map<Plan>(planDto);
             await _planRepository.Create(planEntity);
         }
 
@@ -48,7 +48,6 @@ namespace SabidoMagroAcademia.Application.Services
 
         public async Task Remove(int? id)
         {
-            //Utilizando o .Result para receber um objeto plan em vez de um Task<plan>
             var planEntity = _planRepository.GetById(id).Result;
             await _planRepository.Remove(planEntity);
         }

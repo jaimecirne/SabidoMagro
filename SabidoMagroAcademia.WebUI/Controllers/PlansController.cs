@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace SabidoMagroAcademia.WebUI.Controllers
 {
-    //propriedade define que todos os actions deste controlador so poderão ser acessados por usuários autenticados
     [Authorize]
     public class PlansController : Controller
     {
@@ -20,7 +19,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var categories = await _planService.GetCategories();
+            var categories = await _planService.GetPlans();
             return View(categories);
         }
 

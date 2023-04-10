@@ -13,13 +13,11 @@ namespace SabidoMagroAcademia.WebUI.Controllers
     public class DayOfTrainsController : Controller
     {
         private readonly IDayOfTrainService _dayoftrainService;
-        private readonly IPlanService _planService;
         private readonly IWebHostEnvironment _environment;
 
-        public DayOfTrainsController(IDayOfTrainService dayoftrainAppService, IPlanService planAppService, IWebHostEnvironment environment)
+        public DayOfTrainsController(IDayOfTrainService dayoftrainAppService, IWebHostEnvironment environment)
         {
             _dayoftrainService = dayoftrainAppService;
-            _planService = planAppService;
             _environment = environment;
         }
 
@@ -30,11 +28,9 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             return View(dayoftrains);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
-
+           
             return View();
         }
 
@@ -56,8 +52,6 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (dayoftrainDto == null) return NotFound();
 
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", dayoftrainDto.planId);
 
             return View(dayoftrainDto);
         }
@@ -100,10 +94,10 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var dayoftrainDto = await _dayoftrainService.GetById(id);
 
             if (dayoftrainDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + dayoftrainDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
+           // var wwwroot = _environment.WebRootPath;
+           // var image = Path.Combine(wwwroot, "images\\" + dayoftrainDto.Image);//caminho completo da imagem
+           // var exists = System.IO.File.Exists(image);
+           // ViewBag.ImageExist = exists;
 
             return View(dayoftrainDto);
         }

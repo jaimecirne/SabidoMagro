@@ -35,7 +35,7 @@ namespace SabidoMagroAcademia.Infra.IoC
             services.AddScoped<IPlanRepository, PlanRepository>();
 
             services.AddScoped<IClientService, ClientService>();
-            services.AddScoped<IPlanService, planService>();
+            services.AddScoped<IPlanService, PlanService>();
 
             services.AddScoped<IAuthenticate, AuthenticateService>();
 

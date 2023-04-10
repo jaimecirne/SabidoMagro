@@ -22,7 +22,7 @@ namespace SabidoMagroAcademia.Application.Services
 
         public async Task<IEnumerable<ClientWorkoutDTO>> GetClientWorkouts()
         {
-            var clientworkoutsQuery = new GetClientWorkoutsQuery();
+            var clientworkoutsQuery = new GetWorkoutsQuery();
 
             if (clientworkoutsQuery == null)
                 throw new Exception($"Entity could not be loaded.");
@@ -49,14 +49,14 @@ namespace SabidoMagroAcademia.Application.Services
         public async Task Add(ClientWorkoutDTO clientworkoutDto)
         {
             //realiza o mapeamento da classe DTO para classe command
-            var clientworkoutCreateCommand = _mapper.Map<ClientWorkoutCreateCommand>(clientworkoutDto);
+            var clientworkoutCreateCommand = _mapper.Map<WorkoutCreateCommand>(clientworkoutDto);
             //através do tipo de classe command informada o mediator sabe qual handler chamar
             await _mediator.Send(clientworkoutCreateCommand);
         }
 
         public async Task Update(ClientWorkoutDTO clientworkoutDto)
         {
-            var clientworkoutUpdateCommand = _mapper.Map<ClientWorkoutUpdateCommand>(clientworkoutDto);
+            var clientworkoutUpdateCommand = _mapper.Map<WorkoutUpdateCommand>(clientworkoutDto);
             await _mediator.Send(clientworkoutUpdateCommand);
         }
 

@@ -30,11 +30,9 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             return View(managers);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
-
+           
             return View();
         }
 
@@ -56,8 +54,6 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (managerDto == null) return NotFound();
 
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", managerDto.planId);
 
             return View(managerDto);
         }
@@ -100,11 +96,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var managerDto = await _managerService.GetById(id);
 
             if (managerDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + managerDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
-
+         
             return View(managerDto);
         }
     }

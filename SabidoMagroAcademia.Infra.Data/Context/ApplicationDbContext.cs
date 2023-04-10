@@ -21,6 +21,7 @@ namespace SabidoMagroAcademia.Infra.Data.Context
         public DbSet<Manager> Managers { get; set; }
         public DbSet<Resource> Resources { get; set; }
         public DbSet<Role> Role { get; set; }
+        public DbSet<Workout> Workouts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

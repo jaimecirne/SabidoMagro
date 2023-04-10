@@ -6,7 +6,7 @@ namespace SabidoMagroAcademia.Application.Interfaces
 {
     public interface IPlanService
     {
-        Task<IEnumerable<PlanDTO>> GetCategories();
+        Task<IEnumerable<PlanDTO>> GetPlans();
         Task<PlanDTO> GetById(int? id);
         Task Add(PlanDTO planDto);
         Task Update(PlanDTO planDto);

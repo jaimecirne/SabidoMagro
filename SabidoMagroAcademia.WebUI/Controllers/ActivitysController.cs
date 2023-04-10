@@ -13,13 +13,11 @@ namespace SabidoMagroAcademia.WebUI.Controllers
     public class ActivitysController : Controller
     {
         private readonly IActivityService _activityService;
-        private readonly IPlanService _planService;
         private readonly IWebHostEnvironment _environment;
 
-        public ActivitysController(IActivityService activityAppService, IPlanService planAppService, IWebHostEnvironment environment)
+        public ActivitysController(IActivityService activityAppService, IWebHostEnvironment environment)
         {
             _activityService = activityAppService;
-            _planService = planAppService;
             _environment = environment;
         }
 
@@ -30,11 +28,8 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             return View(activitys);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
-
             return View();
         }
 
@@ -56,9 +51,6 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (activityDto == null) return NotFound();
 
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", activityDto.planId);
-
             return View(activityDto);
         }
 
@@ -73,7 +65,6 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             return View(activityDto);
         }
 
-        //só podem acessar os usuários autenticados e que façam parte desta role
         [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -100,10 +91,10 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var activityDto = await _activityService.GetById(id);
 
             if (activityDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + activityDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
+//            var wwwroot = _environment.WebRootPath;
+//            var image = Path.Combine(wwwroot, "images\\" + activityDto.Image);//caminho completo da imagem
+//            var exists = System.IO.File.Exists(image);
+//            ViewBag.ImageExist = exists;
 
             return View(activityDto);
         }

@@ -11,53 +11,46 @@
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <label asp-for="User.Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <input asp-for="User.Name" class="form-control" />
+                <span asp-validation-for="User.Name" class="text-danger"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <label asp-for="User.Email" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <input asp-for="User.Email" class="form-control" />
+                <span asp-validation-for="User.Email" class="text-danger"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label asp-for="Image" class="col-md-2 control-label"></label>
+            <label asp-for="User.Image" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <input asp-for="User.Image" class="form-control" />
+                <span asp-validation-for="User.Image" class="text-danger"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label asp-for="Weight" class="col-md-2 control-label"></label>
+            <label asp-for="Avaliations.Last().Weight" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
+                <input asp-for="Avaliations.Last().Weight" class="form-control" />
+                <span asp-validation-for="Avaliations.Last().Weight" class="text-danger"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label asp-for="Height" class="col-md-2 control-label"></label>
+            <label asp-for="Avaliations.Last().Height" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Height" class="form-control" />
-                <span asp-validation-for="Height" class="text-danger"></span>
+                <input asp-for="Avaliations.Last().Height" class="form-control" />
+                <span asp-validation-for="Avaliations.Last().Height" class="text-danger"></span>
             </div>
         </div>
 
 
-        <div class="form-group">
-            <label asp-for="planId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="planId" class="form-control" asp-items="ViewBag.planId"> </select>
-                <span asp-validation-for="planId" class="text-danger"></span>
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

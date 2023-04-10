@@ -13,13 +13,15 @@ namespace SabidoMagroAcademia.WebUI.Controllers
     public class AvaliationsController : Controller
     {
         private readonly IAvaliationService _avaliationService;
-        private readonly IPlanService _planService;
+        private readonly IClientService _clientService;
+        private readonly IManagerService _managerService;
         private readonly IWebHostEnvironment _environment;
 
-        public AvaliationsController(IAvaliationService avaliationAppService, IPlanService planAppService, IWebHostEnvironment environment)
+        public AvaliationsController(IAvaliationService avaliationAppService, IClientService clientService, IManagerService managerService, IWebHostEnvironment environment)
         {
             _avaliationService = avaliationAppService;
-            _planService = planAppService;
+            _clientService = clientService;
+            _managerService = managerService;
             _environment = environment;
         }
 
@@ -32,8 +34,12 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
         public async Task<IActionResult> Create()
         {
-            ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
+            ViewBag.clients =
+            new SelectList(await _clientService.GetClients(), "Id", "Name");
+
+            ViewBag.coach =
+            new SelectList(await _managerService.GetManagers(), "Id", "Name");
+
 
             return View();
         }
@@ -56,8 +62,13 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (avaliationDto == null) return NotFound();
 
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", avaliationDto.planId);
+            var clients = await _clientService.GetClients();
+
+            var managers = await _managerService.GetManagers();
+
+            ViewBag.clients = new SelectList(clients, "Id", "Name", avaliationDto.Client);
+
+            ViewBag.managers = new SelectList(managers, "Id", "Name", avaliationDto.Coach);
 
             return View(avaliationDto);
         }
@@ -100,10 +111,10 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var avaliationDto = await _avaliationService.GetById(id);
 
             if (avaliationDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + avaliationDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
+//            var wwwroot = _environment.WebRootPath;
+//            var image = Path.Combine(wwwroot, "images\\" + avaliationDto.Image);//caminho completo da imagem
+//            var exists = System.IO.File.Exists(image);
+//            ViewBag.ImageExist = exists;
 
             return View(avaliationDto);
         }

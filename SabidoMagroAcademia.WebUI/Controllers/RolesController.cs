@@ -13,13 +13,13 @@ namespace SabidoMagroAcademia.WebUI.Controllers
     public class RolesController : Controller
     {
         private readonly IRoleService _roleService;
-        private readonly IPlanService _planService;
+        private readonly IResourceService _resourceService;
         private readonly IWebHostEnvironment _environment;
 
-        public RolesController(IRoleService roleAppService, IPlanService planAppService, IWebHostEnvironment environment)
+        public RolesController(IRoleService roleAppService, IResourceService resourceService, IWebHostEnvironment environment)
         {
             _roleService = roleAppService;
-            _planService = planAppService;
+            _resourceService = resourceService;
             _environment = environment;
         }
 
@@ -32,8 +32,8 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
         public async Task<IActionResult> Create()
         {
-            ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
+            ViewBag.resource =
+            new SelectList(await _resourceService.GetResources(), "Id", "Label");
 
             return View();
         }
@@ -56,8 +56,8 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (roleDto == null) return NotFound();
 
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", roleDto.planId);
+            var resources = await _resourceService.GetResources();
+            ViewBag.planId = new SelectList(resources, "Id", "Label", roleDto.Resources);
 
             return View(roleDto);
         }
@@ -100,10 +100,10 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var roleDto = await _roleService.GetById(id);
 
             if (roleDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + roleDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
+//            var wwwroot = _environment.WebRootPath;
+//            var image = Path.Combine(wwwroot, "images\\" + roleDto.Image);//caminho completo da imagem
+//            var exists = System.IO.File.Exists(image);
+//            ViewBag.ImageExist = exists;
 
             return View(roleDto);
         }

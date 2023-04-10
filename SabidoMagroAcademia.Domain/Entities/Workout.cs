@@ -10,28 +10,28 @@ namespace SabidoMagroAcademia.Domain.Entities
     public sealed class Workout : Entity
     {
         public string Label { get; set; }
-        public List<WorkoutActivity> WorkoutActivities { get; set; }
 
+        public List<WorkoutActivity> WorkoutActivities { get; set; }
 
         public Workout()
         {
 
         }
 
-        public Workout(int id, string label)
+        public Workout(string label, List<WorkoutActivity> workoutActivities)
         {
-            DomainExceptionValidation.When(id < 0, "Invalid Id value.");
-            Id = id;
-            ValidateDomain(label);
+            ValidateDomain(label, workoutActivities);
         }
 
-        public void Update(int id, string label)
+        public void Update(int id, string label, List<WorkoutActivity> workoutActivities)
         {
-            ValidateDomain(label);
+            ValidateDomain(label, workoutActivities);
+            DomainExceptionValidation.When(id < 0, "Invalid Id value.");
+            Id = id;
         }
         public ICollection<Client> Clients { get; set; }
 
-        private void ValidateDomain(string label)
+        private void ValidateDomain(string label, List<WorkoutActivity> workoutActivities)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(label),
                 "Invalid name.Name is required");
@@ -40,6 +40,7 @@ namespace SabidoMagroAcademia.Domain.Entities
                "Invalid name, too short, minimum 3 characters");
 
             Label = label;
+            WorkoutActivities = workoutActivities;
         }
     }
 }

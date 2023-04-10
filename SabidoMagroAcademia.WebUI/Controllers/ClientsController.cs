@@ -13,27 +13,30 @@ namespace SabidoMagroAcademia.WebUI.Controllers
     public class ClientsController : Controller
     {
         private readonly IClientService _clientService;
-        private readonly IPlanService _planService;
+        private readonly IAvaliationService _avaliationService;
+        private readonly IDayOfTrainService _dayOfTrainService;
+        private readonly IClientWorkoutService _clientWorkoutService;
         private readonly IWebHostEnvironment _environment;
 
-        public ClientsController(IClientService productAppService, IPlanService planAppService, IWebHostEnvironment environment)
+        public ClientsController(IClientService clientService, IAvaliationService avaliationService, IDayOfTrainService dayOfTrainService, IClientWorkoutService clientWorkoutService, IWebHostEnvironment environment)
         {
-            _clientService = productAppService;
-            _planService = planAppService;
+            _clientService = clientService;
+            _avaliationService = avaliationService;
+            _dayOfTrainService = dayOfTrainService;
+            _clientWorkoutService = clientWorkoutService;
             _environment = environment;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var products = await _clientService.GetClients();
-            return View(products);
+            var clients = await _clientService.GetClients();
+            return View(clients);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
+          
 
             return View();
         }
@@ -56,8 +59,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (clientDto == null) return NotFound();
 
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", clientDto.planId);
+            
 
             return View(clientDto);
         }
@@ -100,11 +102,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var clientDto = await _clientService.GetById(id);
 
             if (clientDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + clientDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
-
+       
             return View(clientDto);
         }
     }

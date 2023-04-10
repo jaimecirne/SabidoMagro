@@ -13,13 +13,11 @@ namespace SabidoMagroAcademia.WebUI.Controllers
     public class ResourcesController : Controller
     {
         private readonly IResourceService _resourceService;
-        private readonly IPlanService _planService;
         private readonly IWebHostEnvironment _environment;
 
-        public ResourcesController(IResourceService resourceAppService, IPlanService planAppService, IWebHostEnvironment environment)
+        public ResourcesController(IResourceService resourceAppService, IWebHostEnvironment environment)
         {
             _resourceService = resourceAppService;
-            _planService = planAppService;
             _environment = environment;
         }
 
@@ -30,11 +28,8 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             return View(resources);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
-
             return View();
         }
 
@@ -55,9 +50,6 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var resourceDto = await _resourceService.GetById(id);
 
             if (resourceDto == null) return NotFound();
-
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", resourceDto.planId);
 
             return View(resourceDto);
         }
@@ -100,10 +92,10 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var resourceDto = await _resourceService.GetById(id);
 
             if (resourceDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + resourceDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
+//            var wwwroot = _environment.WebRootPath;
+//            var image = Path.Combine(wwwroot, "images\\" + resourceDto.Image);//caminho completo da imagem
+//            var exists = System.IO.File.Exists(image);
+//            ViewBag.ImageExist = exists;
 
             return View(resourceDto);
         }

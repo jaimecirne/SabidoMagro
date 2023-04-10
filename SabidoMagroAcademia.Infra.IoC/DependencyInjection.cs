@@ -60,10 +60,11 @@ namespace SabidoMagroAcademia.Infra.IoC
             services.AddScoped<IManagerRepository, ManagerRepository>();
             services.AddScoped<IResourceRepository, ResourceRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 
 
             services.AddScoped<IClientService, ClientService>();
-            services.AddScoped<IPlanService, planService>();
+            services.AddScoped<IPlanService, PlanService>();
             services.AddScoped<IActivityService, ActivityService>();
             services.AddScoped<IAvaliationService, AvaliationService>();
             services.AddScoped<IClientWorkoutService, ClientWorkoutService>();
@@ -72,6 +73,7 @@ namespace SabidoMagroAcademia.Infra.IoC
             services.AddScoped<IManagerService, ManagerService>();
             services.AddScoped<IResourceService, ResourceService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IWorkoutService, WorkoutService>();
 
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();

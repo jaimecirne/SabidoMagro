@@ -33,7 +33,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
         public async Task<IActionResult> Create()
         {
             ViewBag.planId =
-            new SelectList(await _planService.GetCategories(), "Id", "Name");
+            new SelectList(await _planService.GetPlans(), "Id", "Label");
 
             return View();
         }
@@ -56,8 +56,8 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (contractDto == null) return NotFound();
 
-            var categories = await _planService.GetCategories();
-            ViewBag.planId = new SelectList(categories, "Id", "Name", contractDto.planId);
+            var plans = await _planService.GetPlans();
+            ViewBag.planId = new SelectList(plans, "Id", "Label", contractDto.Plan);
 
             return View(contractDto);
         }
@@ -100,10 +100,10 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             var contractDto = await _contractService.GetById(id);
 
             if (contractDto == null) return NotFound();
-            var wwwroot = _environment.WebRootPath;
-            var image = Path.Combine(wwwroot, "images\\" + contractDto.Image);//caminho completo da imagem
-            var exists = System.IO.File.Exists(image);
-            ViewBag.ImageExist = exists;
+            //var wwwroot = _environment.WebRootPath;
+            //var image = Path.Combine(wwwroot, "images\\" + contractDto.Image);//caminho completo da imagem
+            //var exists = System.IO.File.Exists(image);
+            //ViewBag.ImageExist = exists;
 
             return View(contractDto);
         }

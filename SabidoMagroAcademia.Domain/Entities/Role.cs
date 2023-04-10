@@ -9,8 +9,8 @@ namespace SabidoMagroAcademia.Domain.Entities
 {
     public sealed class Role: Entity
     {
-        public String Label { get; set; }
-        public String Key { get; set; }
+        public string Label { get; set; }
+        public string Key { get; set; }
         public List<Resource> Resources { get; set; }
 
         public Role()

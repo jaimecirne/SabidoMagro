@@ -11,17 +11,12 @@ namespace SabidoMagroAcademia.Application.DTOs
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "The Name is Required")]
+        [Required(ErrorMessage = "The Label is Required")]
         [MinLength(3)]
         [MaxLength(100)]
-        [DisplayName("Nome")]
-        public string Name { get; set; }
+        [DisplayName("Label")]
+        public string Label { get; set; }
 
-        [Required(ErrorMessage = "The Description is Required")]
-        [MinLength(5)]
-        [MaxLength(200)]
-        [DisplayName("Descrição")]
-        public string Description { get; set; }
 
         [Required(ErrorMessage = "The Weight is Required")]
         [Column(TypeName = "decimal(18,2)")]
@@ -35,14 +30,27 @@ namespace SabidoMagroAcademia.Application.DTOs
         [DisplayName("Altura")]
         public int Height { get; set; }
 
-        [MaxLength(250)]
-        [DisplayName("Product Image")]
-        public string Image { get; set; }
+        [Required(ErrorMessage = "The Coach's Comments are Required")]
+        [MinLength(5)]
+        [MaxLength(200)]
+        [DisplayName("CoachsComments")]
+        public string CoachsComments { get; set; }
+
+        [Required(ErrorMessage = "The Date is Required")]
+        [DisplayName("Date")]
+        public DateTime Date{ get; set; }
 
         [JsonIgnore]
-        public Plan plan { get; set; }
+        public Client Client { get; set; }
 
-        [DisplayName("Planos")]
-        public int planId { get; set; }
+        [JsonIgnore]
+        public Manager Coach { get; set; }
+
+        [DisplayName("Client")]
+        public int ClientId { get; set; }
+
+        [DisplayName("Coach")]
+        public int CoachId { get; set; }
+
     }
 }
