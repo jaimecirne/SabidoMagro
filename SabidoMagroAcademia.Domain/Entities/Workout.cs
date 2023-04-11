@@ -18,6 +18,19 @@ namespace SabidoMagroAcademia.Domain.Entities
 
         }
 
+        public Workout(int id, string label)
+        {
+            DomainExceptionValidation.When(string.IsNullOrEmpty(label),
+             "Invalid name.Name is required");
+
+            DomainExceptionValidation.When(label.Length < 3,
+               "Invalid name, too short, minimum 3 characters");
+
+            Label = label;
+            DomainExceptionValidation.When(id < 0, "Invalid Id value.");
+            Id = id;
+        }
+
         public Workout(string label, List<WorkoutActivity> workoutActivities)
         {
             ValidateDomain(label, workoutActivities);

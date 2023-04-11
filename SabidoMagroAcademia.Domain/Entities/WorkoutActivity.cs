@@ -15,6 +15,20 @@ namespace SabidoMagroAcademia.Domain.Entities
         public Workout Workout { get; set; }
         public Activity Activity { get; set; }
 
+        public int WorkoutId { get; set; }
+        public int ActivityId { get; set; }
+
+        public WorkoutActivity(int id, int order , int sets, int reps, int rest, int activityId, int workoutId)
+        {
+            Order = order;
+            Sets = sets;
+            Reps = reps;
+            Rest = rest;
+            ActivityId = activityId;
+            WorkoutId = workoutId;
+            Id = id;
+        }
+
         public WorkoutActivity()
         {
 

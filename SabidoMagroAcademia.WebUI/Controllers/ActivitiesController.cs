@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 namespace SabidoMagroAcademia.WebUI.Controllers
 {
     [Authorize]
-    public class ActivitysController : Controller
+    public class ActivitiesController : Controller
     {
         private readonly IActivityService _activityService;
         private readonly IWebHostEnvironment _environment;
 
-        public ActivitysController(IActivityService activityAppService, IWebHostEnvironment environment)
+        public ActivitiesController(IActivityService activityAppService, IWebHostEnvironment environment)
         {
             _activityService = activityAppService;
             _environment = environment;

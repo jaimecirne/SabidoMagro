@@ -1,0 +1,60 @@
+﻿@model SabidoMagroAcademia.Application.DTOs.AvaliationDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Avaliation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Client)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Client.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Label)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Label)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CoachsComments)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CoachsComments)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Coach)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Coach.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

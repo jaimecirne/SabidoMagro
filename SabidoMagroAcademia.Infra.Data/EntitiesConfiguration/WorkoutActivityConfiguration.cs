@@ -11,7 +11,9 @@ namespace SabidoMagroAcademia.Infra.Data.EntitiesConfiguration
             builder.HasKey(t => t.Id);
 
             builder.HasOne(e => e.Workout).WithMany(e => e.WorkoutActivities);
-      
+
+            builder.HasData(new WorkoutActivity(1, 1, 3, 10, 1, 45, 1));
+
         }
     }
 }
