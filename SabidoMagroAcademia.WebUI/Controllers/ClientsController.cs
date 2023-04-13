@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SabidoMagroAcademia.Application.DTOs;
 using SabidoMagroAcademia.Application.Interfaces;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var clients = await _clientService.GetClients();
+            var clients = new List<ClientDTO>(); //await _clientService.GetClients();
             return View(clients);
         }
 
