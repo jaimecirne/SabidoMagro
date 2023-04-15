@@ -206,3 +206,51 @@ footer.sticky-footer {
 #wrapper #content-wrapper {
     background-color: #f0f0f0 !important;
 }
+
+.new-members {
+    box-shadow: 5px 5px 0px 2px #4e73df, 6px 6px 0px 2px #000 !important
+}
+
+.inactive-members {
+    box-shadow: 5px 5px 0px 2px #f6c23e, 6px 6px 0px 2px #000 !important
+}
+
+.closed-contracts {
+    box-shadow: 5px 5px 0px 2px #1cc88a, 6px 6px 0px 2px #000 !important
+}
+
+.total-contracts-closed {
+    box-shadow: 5px 5px 0px 2px #36b9cc, 6px 6px 0px 2px #000 !important
+}
+
+.login {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    flex-direction: column !important;
+    width: 55% !important;
+    min-width: 450px !important;
+    max-width: 600px !important;
+}
+
+.login .form-group {
+    margin-bottom: 1rem !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+}
+
+.login .form-group > label {
+    max-width: none !important;
+}
+
+.login .form-group.button-login {
+    display: grid !important;
+    justify-content: center !important;
+}
+
+.login .form-group.button-login > .col-md-10 {
+    max-width: none !important;
+}

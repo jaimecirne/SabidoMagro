@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card shadow h-100 py-2">
+            <div class="card shadow h-100 py-2 new-members">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card shadow h-100 py-2">
+            <div class="card shadow h-100 py-2 inactive-members">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card shadow h-100 py-2">
+            <div class="card shadow h-100 py-2 closed-contracts">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -60,7 +60,7 @@
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card shadow h-100 py-2">
+            <div class="card shadow h-100 py-2 total-contracts-closed">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -109,12 +109,8 @@
                     <h6 class="m-0 font-weight-bold text-primary">Frequência de visitas</h6>
                 </div>
                 <div class="card-body">
-
-                    <div id="container">
-                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
-                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-mekko.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
-                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-exports.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
-                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-ui.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+                    <div class="container">
+                        <canvas id="frequencia_visitas"></canvas>
                     </div>
                 </div>
             </div>
@@ -169,56 +165,67 @@
 </script>
 
 <script>
-    data: {
-        // Legendas das Barras
-        labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-            datasets: [{
-                // Legenda geral
-                label: '$ em Vendas',
-                // Dados a serem inseridos nas barras
-                data: [10, 9, 12, 19, 21, 7],
-                // Define as cores de preenchimento das barras
-                // de acordo com sua posição no vetor
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                // Define as cores de preenchimento das bordas das barras
-                // de acordo com sua posição no vetor
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                // Define a espessura da borda dos retângulos
-                borderWidth: 1
+    var ctx = document.getElementById('frequencia_visitas').getContext('2d');
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+        datasets:
+            [{
+                label: 'Manhâ',
+                data: [350, 300, 333, 347, 399, 357, 366],
+                backgroundColor: '#FFD93D',
+                borderColor: '#FFD93D',
+                borderWidth: 3
+            },
+            {
+                label: 'Tarde',
+                data: [250, 267, 259, 277, 281, 245, 288],
+                backgroundColor: '#FF6000',
+                borderColor: '#FF6000',
+                borderWidth: 3
+            },
+            {
+                label: 'Noite',
+                data: [400, 431, 452, 420, 402, 433, 431],
+                backgroundColor: '#CD1818',
+                borderColor: '#CD1818',
+                borderWidth: 3
             }]
     },
-    // Customização que define onde irá começar a ser erguida a barra
-    // começando pelo ZERO, no eixo X.
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
+        options: {
+            legend: {
+                labels: {
+                    fontColor: "black"
                 }
-            }]
+            },
+            scales: {
+                xAxes: [{
+                    beginAtZero: true,
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Dias da Semana',
+                        fontColor: '#000000'
+                    },
+                    ticks: {
+                        fontColor: "black"
+                    }
+                }],
+                yAxes: [{
+                    beginAtZero: true,
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Quantidade de Alunos',
+                        fontColor: '#000000'
+                    },
+                    ticks: {
+                        fontColor: "black"
+                    }
+                }]
+            }
         }
-    }
-    // criando um novo objeto, contendo o tipo, os dados
-    // e as opções que o gráfico terá.
-    let ctx = document.getElementById('myChart');
-    let myBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: options
     });
 </script>
 
