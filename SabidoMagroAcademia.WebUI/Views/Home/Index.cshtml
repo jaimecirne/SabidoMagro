@@ -1,6 +1,227 @@
-﻿
-<div class="text-center">
-    <h2 class="display-4">Sabido Magro Academia</h2>
-    <img src="~/images/catalog2.png" />
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Novos Membros (No último mês)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">170</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Membros Inativos (Sem visitas nos últimos 30 dias)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">9</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas  fa-user-alt-slash fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Quantidade de Contratos Fechados (No mês atual)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">61</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Total de Contratos Fechados (No mês atual)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">R$ 6.764,90</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+
+            <!-- Grafico horizontal -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Membros ativos: 1949</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="small font-weight-bold">Plano Básico <span class="float-right">(1.137) 62%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 62%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Plano Personalidzado <span class="float-right">(214) 10%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Plano Completo<span class="float-right">(598) 28%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 28%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Grafico vertical em pilha-->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Frequência de visitas</h6>
+                </div>
+                <div class="card-body">
+
+                    <div id="container">
+                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-mekko.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-exports.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+                        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-ui.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
+
+<script>
+    anychart.onDocumentReady(function () {
+
+        // create a data set
+        var data = anychart.data.set([
+            ["Segunda", 10000, 12500],
+            ["Terça", 12000, 15000],
+            ["Quarta", 13000, 16500],
+            ["Quinta", 10000, 13000],
+            ["Sexta", 14000, 10000],
+            ["Sábado", 10000, 13000],
+        ]);
+
+        // map the data
+        var seriesData_1 = data.mapAs({ x: 0, value: 1 });
+        var seriesData_2 = data.mapAs({ x: 0, value: 2 });
+        var seriesData_3 = data.mapAs({ x: 0, value: 3 });
+
+        // create a chart
+        var chart = anychart.barmekko();
+
+        // create the first series
+        var series1 = chart.mekko(seriesData_1);
+
+        // create the first series and set the data
+        var series1 = chart.mekko(seriesData_1);
+
+        // create the second series and set the data
+        var series2 = chart.mekko(seriesData_2);
+
+        // create the second series and set the data
+        var series3 = chart.mekko(seriesData_3);
+
+        // set the chart title
+        /*chart.title("Bar Mekko Chart: Multiple serties");*/
+
+        // set the container id
+        chart.container("container");
+
+        // initiate drawing the chart
+        chart.draw();
+    });
+</script>
+
+<script>
+    data: {
+        // Legendas das Barras
+        labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            datasets: [{
+                // Legenda geral
+                label: '$ em Vendas',
+                // Dados a serem inseridos nas barras
+                data: [10, 9, 12, 19, 21, 7],
+                // Define as cores de preenchimento das barras
+                // de acordo com sua posição no vetor
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                // Define as cores de preenchimento das bordas das barras
+                // de acordo com sua posição no vetor
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                // Define a espessura da borda dos retângulos
+                borderWidth: 1
+            }]
+    },
+    // Customização que define onde irá começar a ser erguida a barra
+    // começando pelo ZERO, no eixo X.
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+    // criando um novo objeto, contendo o tipo, os dados
+    // e as opções que o gráfico terá.
+    let ctx = document.getElementById('myChart');
+    let myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });
+</script>
+
+
+
 

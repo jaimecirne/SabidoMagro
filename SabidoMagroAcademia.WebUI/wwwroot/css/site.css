@@ -2,67 +2,207 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.logotipo__img {
+    transform: rotate(15deg);
+}
+
+html, body, #container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*============================================================================*/
+/*ESTILIZAÇÃO NOVA - EM TESTE*/
+
+body {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+.logotipo__img {
+    transform: rotate(15deg);
+    width: 60%;
+    height: auto;
+}
+
+
+.sidebar-dark .sidebar-brand {
+    color: #fff;
+    display: grid !important;
+    height: auto;
+    gap: 1.5rem;
+}
+
+:link {
+    border-bottom: none !important;
+}
+
+
+element.style {
+}
+
+@media (min-width: 768px) .sidebar {
+    width: 14rem !important;
+}
+
+.sidebar {
+    width: 6.5rem;
+    min-height: 100vh;
+}
+
+.bg-gradient-primary {
+    background-color: #FD8A8A;
+    background-image: none !important;
+    background-size: cover;
+}
+
+.bg-white {
+    background-color: #9EA1D4 !important;
+    border-bottom: 3px solid #7f81ad !important;
+}
+
+.input-group > input {
+    margin-right: 0 !important;
+    height: 38px !important;
+}
+
+.input-group > .input-group-append > button {
+    margin-left: 0 !important;
+}
+
+.mr-2, .mx-2 {
+    margin-right: 0.5rem !important;
+    font-size: 1rem;
+    color: #9f9f9f !important;
+}
+
+.text__user__color {
+    margin-right: 0.5rem !important;
+    font-size: 1rem;
+    color: #ffffff !important;
+}
+
+.sidebar .nav-item .nav-link .img-profile, .topbar .nav-item .nav-link .img-profile {
+    height: 3rem;
+    width: 3rem;
+}
+
+.topbar .dropdown .dropdown-menu {
+    width: calc(100% - 1.5rem);
+    right: 0.75rem;
+    margin-top: 6px;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #3a3b45;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    margin-top: 10px;
+}
+
+.card {
+    width: 100% !important;
+    height: 100% !important;
+    border: 1px solid black !important;
+    background-color: var(--back);
+    float: left;
+    margin: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 10px 10px 0px 0px #E9E9E9, 15px 15px 0px 0px #000000, !important;
+    /* border: black; */
+    box-shadow: 5px 5px 0px 2px #FD8A8A !important;
+    box-shadow: 5px 5px 0px 2px #FD8A8A, 6px 6px 0px 2px #000, 8px 7px 10px #000 !important;
+}
+
+footer.sticky-footer {
+    padding: 0 !important;
+    flex-shrink: 0;
+    border-top: 3px solid #7f81ad !important;
+    color: #fff !important;
+}
+
+    footer.sticky-footer a {
+        color: #fff !important;
+    }
+
+#wrapper #content-wrapper {
+    background-color: #f0f0f0 !important;
 }
