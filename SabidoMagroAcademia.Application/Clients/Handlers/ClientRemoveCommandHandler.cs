@@ -10,17 +10,17 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
 {
     public class ClientRemoveCommandHandler : IRequestHandler<ClientRemoveCommand, Client>
     {
-        private readonly IClientRepository _productRepository;
+        private readonly IClientRepository _clientRepository;
         public ClientRemoveCommandHandler(IClientRepository productRepository)
         {
-            _productRepository = productRepository ?? throw new
+            _clientRepository = productRepository ?? throw new
                 ArgumentNullException(nameof(productRepository));
         }
 
         public async Task<Client> Handle(ClientRemoveCommand request,
             CancellationToken cancellationToken)
         {
-            var product = await _productRepository.GetByIdAsync(request.Id);
+            var product = await _clientRepository.GetByIdAsync(request.Id);
 
             if (product == null)
             {
@@ -29,7 +29,7 @@ namespace SabidoMagroAcademia.Application.Products.Handlers
 
             else
             {
-                var result = await _productRepository.RemoveAsync(product);
+                var result = await _clientRepository.RemoveAsync(product);
                 return result;
             }
 

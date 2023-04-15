@@ -4,6 +4,7 @@ using SabidoMagroAcademia.Application.DTOs;
 using SabidoMagroAcademia.Application.Interfaces;
 using SabidoMagroAcademia.Application.Products.Commands;
 using SabidoMagroAcademia.Application.Products.Queries;
+using SabidoMagroAcademia.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -48,8 +49,26 @@ namespace SabidoMagroAcademia.Application.Services
 
         public async Task Add(ClientDTO clientDto)
         {
+            List<Avaliation> avaliations = new List<Avaliation>();
+            avaliations.Add(new Avaliation(clientDto.Weight, clientDto.Height));
+
+            ClientDTO client = new ClientDTO
+            {
+                User = new User
+                (
+                    clientDto.Name,
+                    clientDto.Email,
+                    "0000-0000",
+                    "Masculino",//clientDto.Gender,
+                    DateTime.Now,//clientDto.Born,
+                    clientDto.Image
+                 ),
+                Avaliations = avaliations,
+                DayOfTrains = new List<DayOfTrain>(),
+                ClientWorkouts = new List<ClientWorkout>()
+            };
             //realiza o mapeamento da classe DTO para classe command
-            var clientCreateCommand = _mapper.Map<ClientCreateCommand>(clientDto);
+            var clientCreateCommand = _mapper.Map<ClientCreateCommand>(client);
             //através do tipo de classe command informada o mediator sabe qual handler chamar
             await _mediator.Send(clientCreateCommand);
         }

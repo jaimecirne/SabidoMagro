@@ -17,24 +17,24 @@ namespace SabidoMagroAcademia.Domain.Entities
 
         }
 
-        public User(string name, string email, string gender, DateTime born, string image)
+        public User(string name, string email, string fone, string gender, DateTime born, string image)
         {
-            ValidateDomain(name, email, gender, born, image);
+            ValidateDomain(name, email, fone, gender, born, image);
         }
 
-        public User(int id, string name, string email, string gender, DateTime born, string image)
+        public User(int id, string name, string email, string fone, string gender, DateTime born, string image)
         {
             DomainExceptionValidation.When(id < 0, "Invalid Id value.");
             Id = id;
-            ValidateDomain(name, email, gender, born, image);
+            ValidateDomain(name, email, fone, gender, born, image);
         }
 
-        public void Update(string name, string email, string gender, DateTime born, string image)
+        public void Update(string name, string email, string fone, string gender, DateTime born, string image)
         {
-            ValidateDomain(name, email, gender, born, image);
+            ValidateDomain(name, email, fone, gender, born, image);
         }
 
-        private void ValidateDomain(string name, string email, string gender, DateTime born, string image)
+        private void ValidateDomain(string name, string email, string fone, string gender, DateTime born, string image)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
                 "Invalid name. Name is required");
@@ -57,6 +57,7 @@ namespace SabidoMagroAcademia.Domain.Entities
 
             Name = name;
             Email = email;
+            Fone = fone;
             Gender = gender;
             Born = born;
             Image = image;

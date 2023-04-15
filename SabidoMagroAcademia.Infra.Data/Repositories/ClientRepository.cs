@@ -31,7 +31,12 @@ namespace SabidoMagroAcademia.Infra.Data.Repositories
 
         public async Task<IEnumerable<Client>> GetClientsAsync()
         {
-            return await _clientContext.Clients.ToListAsync();
+            return await _clientContext.Clients
+                .Include(c => c.User)
+                .Include(c => c.Avaliations)
+                .Include(c => c.ClientWorkouts)
+                .Include(c => c.DayOfTrains)
+                .ToListAsync();
         }
 
         public async Task<Client> RemoveAsync(Client client)

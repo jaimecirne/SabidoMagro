@@ -16,7 +16,7 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.5")
+                .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -591,14 +591,29 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
                     b.Property<int?>("PlanId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ResourceId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WorkoutId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PlanId");
 
+                    b.HasIndex("ResourceId");
+
+                    b.HasIndex("RoleId");
+
                     b.HasIndex("UserId");
+
+                    b.HasIndex("WorkoutId");
 
                     b.ToTable("Clients");
                 });
@@ -863,7 +878,14 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
 
                     b.HasIndex("ClientWorkoutId");
 
-                    b.ToTable("Workout");
+                    b.ToTable("Workouts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Label = "Treino para Parte Anterior da Perna"
+                        });
                 });
 
             modelBuilder.Entity("SabidoMagroAcademia.Domain.Entities.WorkoutActivity", b =>
@@ -873,7 +895,7 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ActivityId")
+                    b.Property<int>("ActivityId")
                         .HasColumnType("int");
 
                     b.Property<int>("Order")
@@ -888,7 +910,7 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
                     b.Property<int>("Sets")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WorkoutId")
+                    b.Property<int>("WorkoutId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -898,6 +920,18 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
                     b.HasIndex("WorkoutId");
 
                     b.ToTable("WorkoutActivity");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ActivityId = 45,
+                            Order = 1,
+                            Reps = 10,
+                            Rest = 1,
+                            Sets = 3,
+                            WorkoutId = 1
+                        });
                 });
 
             modelBuilder.Entity("SabidoMagroAcademia.Infra.Data.Identity.ApplicationUser", b =>
@@ -1041,9 +1075,21 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
                         .WithMany("Clients")
                         .HasForeignKey("PlanId");
 
+                    b.HasOne("SabidoMagroAcademia.Domain.Entities.Resource", null)
+                        .WithMany("Clients")
+                        .HasForeignKey("ResourceId");
+
+                    b.HasOne("SabidoMagroAcademia.Domain.Entities.Role", null)
+                        .WithMany("Clients")
+                        .HasForeignKey("RoleId");
+
                     b.HasOne("SabidoMagroAcademia.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+
+                    b.HasOne("SabidoMagroAcademia.Domain.Entities.Workout", null)
+                        .WithMany("Clients")
+                        .HasForeignKey("WorkoutId");
 
                     b.Navigation("User");
                 });
@@ -1143,11 +1189,15 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
                 {
                     b.HasOne("SabidoMagroAcademia.Domain.Entities.Activity", "Activity")
                         .WithMany()
-                        .HasForeignKey("ActivityId");
+                        .HasForeignKey("ActivityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SabidoMagroAcademia.Domain.Entities.Workout", "Workout")
                         .WithMany("WorkoutActivities")
-                        .HasForeignKey("WorkoutId");
+                        .HasForeignKey("WorkoutId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Activity");
 
@@ -1182,13 +1232,22 @@ namespace SabidoMagroAcademia.Infra.Data.Migrations
                     b.Navigation("Clients");
                 });
 
+            modelBuilder.Entity("SabidoMagroAcademia.Domain.Entities.Resource", b =>
+                {
+                    b.Navigation("Clients");
+                });
+
             modelBuilder.Entity("SabidoMagroAcademia.Domain.Entities.Role", b =>
                 {
+                    b.Navigation("Clients");
+
                     b.Navigation("Resources");
                 });
 
             modelBuilder.Entity("SabidoMagroAcademia.Domain.Entities.Workout", b =>
                 {
+                    b.Navigation("Clients");
+
                     b.Navigation("WorkoutActivities");
                 });
 #pragma warning restore 612, 618

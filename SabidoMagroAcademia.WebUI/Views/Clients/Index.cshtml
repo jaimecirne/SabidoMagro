@@ -35,38 +35,42 @@
                     @Html.DisplayNameFor(model => model.User.Email)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Avaliations.Last().Weight)
+                    @Html.DisplayNameFor(model => model.Weight)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @if (Model.Any())
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.User.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Avaliations.Last().Weight)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
-                            <span class="fas fa-edit">Edit</span>
-                        </a>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Name)
+                            @*@item.User.Name*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Weight)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
+                                <span class="fas fa-edit">Edit</span>
+                            </a>
 
-                        <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
-                            <span class="fas fa-search">Details</span>
-                        </a>
+                            <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
+                                <span class="fas fa-search">Details</span>
+                            </a>
 
-                        <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
-                            <span class="fas fa-trash-alt">Delete</span>
-                        </a>
-                    </td>
-                </tr>
+                            <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
+                                <span class="fas fa-trash-alt">Delete</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>

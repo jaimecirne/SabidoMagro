@@ -28,17 +28,17 @@ namespace SabidoMagroAcademia.WebUI.Controllers
             _environment = environment;
         }
 
+        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var clients = new List<ClientDTO>(); //await _clientService.GetClients();
+            var clients = await _clientService.GetClients();
             return View(clients);
         }
 
         public IActionResult Create()
-        {
-          
-
+        {            
             return View();
         }
 

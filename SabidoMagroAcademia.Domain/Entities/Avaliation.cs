@@ -24,6 +24,12 @@ namespace SabidoMagroAcademia.Domain.Entities
 
         }
 
+        public Avaliation(decimal weight, int height)
+        {
+            Weight = weight;
+            Height = height;
+        }
+
         public Avaliation(String label, decimal weight, int height, String coachsComments, Manager coach)
         {
             ValidateDomain(label, weight, height, coachsComments, coach);
