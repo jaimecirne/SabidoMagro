@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SabidoMagroAcademia.Application.DTOs;
 using SabidoMagroAcademia.Application.Interfaces;
+using SabidoMagroAcademia.Domain.Entities;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,14 +20,23 @@ namespace SabidoMagroAcademia.WebUI.Controllers
         private readonly IDayOfTrainService _dayOfTrainService;
         private readonly IClientWorkoutService _clientWorkoutService;
         private readonly IWebHostEnvironment _environment;
+        private readonly IMapper _mapper;
 
-        public ClientsController(IClientService clientService, IAvaliationService avaliationService, IDayOfTrainService dayOfTrainService, IClientWorkoutService clientWorkoutService, IWebHostEnvironment environment)
+        public ClientsController(
+            IClientService clientService,
+            IAvaliationService avaliationService,
+            IDayOfTrainService dayOfTrainService,
+            IClientWorkoutService clientWorkoutService,
+            IWebHostEnvironment environment,
+            IMapper mapper
+            )
         {
             _clientService = clientService;
             _avaliationService = avaliationService;
             _dayOfTrainService = dayOfTrainService;
             _clientWorkoutService = clientWorkoutService;
             _environment = environment;
+            _mapper = mapper;
         }
 
         //[Authorize(Roles = "Admin")]
@@ -43,14 +54,17 @@ namespace SabidoMagroAcademia.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ClientDTO clientDto)
+        public async Task<IActionResult> Create(UserDTO userDTO)
         {
+            User user = _mapper.Map<User>(userDTO);
+
             if (ModelState.IsValid)
             {
-                await _clientService.Add(clientDto);
+                ClientDTO clientDTO = new ClientDTO { User = user };
+                await _clientService.Add(clientDTO);
                 return RedirectToAction(nameof(Index));
             }
-            return View(clientDto);
+            return View(userDTO);
         }
 
         public async Task<IActionResult> Edit(int? id)

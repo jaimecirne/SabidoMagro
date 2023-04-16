@@ -10,7 +10,7 @@
         <dd class="col-sm-10">@Html.DisplayFor(model => model.User.Email)</dd>
         <dt class="col-sm-2">@Html.DisplayNameFor(model => model.User.Image)</dt>
         <dd class="col-sm-10">
-            @if (!ViewBag.ImageExist)
+            @*@if (!ViewBag.ImageExist)
             {
                 <img src="~/images/noimage.png" class="rounded-circle"
                      height="300" width="300" asp-append-version="true" />
@@ -19,12 +19,12 @@
             {
                 <img src="~/images/@Model.User.Image" class="rounded-circle"
                      height="300" width="300" asp-append-version="true" />
-            }
+            }*@
         </dd>
-        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Avaliations.Last().Weight)</dt>
+        @*<dt class="col-sm-2">@Html.DisplayNameFor(model => model.Avaliations.Last().Weight)</dt>
         <dd class="col-sm-10">@Html.DisplayFor(model => model.Avaliations.Last().Weight)</dd>
         <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Avaliations.Last().Height)</dt>
-        <dd class="col-sm-10">@Html.DisplayFor(model => model.Avaliations.Last().Height)</dd>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Avaliations.Last().Height)</dd>*@
     </dl>
 </div>
 <div>

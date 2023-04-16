@@ -26,6 +26,7 @@ namespace SabidoMagroAcademia.Application.Mappings
             CreateMap<Resource, ResourceDTO>().ReverseMap();
             CreateMap<Role, RoleDTO>().ReverseMap();
             CreateMap<Workout, WorkoutDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
 
         }
     }

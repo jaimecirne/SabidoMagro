@@ -49,26 +49,26 @@ namespace SabidoMagroAcademia.Application.Services
 
         public async Task Add(ClientDTO clientDto)
         {
-            List<Avaliation> avaliations = new List<Avaliation>();
-            avaliations.Add(new Avaliation(clientDto.Weight, clientDto.Height));
+            //List<Avaliation> avaliations = new List<Avaliation>();
+            //avaliations.Add(new Avaliation(clientDto.Weight, clientDto.Height));
 
-            ClientDTO client = new ClientDTO
-            {
-                User = new User
-                (
-                    clientDto.Name,
-                    clientDto.Email,
-                    "0000-0000",
-                    "Masculino",//clientDto.Gender,
-                    DateTime.Now,//clientDto.Born,
-                    clientDto.Image
-                 ),
-                Avaliations = avaliations,
-                DayOfTrains = new List<DayOfTrain>(),
-                ClientWorkouts = new List<ClientWorkout>()
-            };
+            //ClientDTO client = new ClientDTO
+            //{
+            //    User = new User
+            //    (
+            //        clientDto.Name,
+            //        clientDto.Email,
+            //        "0000-0000",
+            //        "Masculino",//clientDto.Gender,
+            //        DateTime.Now,//clientDto.Born,
+            //        clientDto.Image
+            //     ),
+            //    Avaliations = avaliations,
+            //    DayOfTrains = new List<DayOfTrain>(),
+            //    ClientWorkouts = new List<ClientWorkout>()
+            //};
             //realiza o mapeamento da classe DTO para classe command
-            var clientCreateCommand = _mapper.Map<ClientCreateCommand>(client);
+            var clientCreateCommand = _mapper.Map<ClientCreateCommand>(clientDto);
             //através do tipo de classe command informada o mediator sabe qual handler chamar
             await _mediator.Send(clientCreateCommand);
         }
