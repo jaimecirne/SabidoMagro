@@ -37,7 +37,7 @@ namespace SabidoMagroAcademia.Application.Services
 
         public async Task<ClientDTO> GetById(int? id)
         {
-            var clientByIdQuery = new GetClientByIdQuery(id.Value);
+            var clientByIdQuery = new GetClientByIdQuery(id.GetValueOrDefault());
 
             if (clientByIdQuery == null)
                 throw new Exception($"Entity could not be loaded.");
@@ -48,25 +48,7 @@ namespace SabidoMagroAcademia.Application.Services
         }
 
         public async Task Add(ClientDTO clientDto)
-        {
-            //List<Avaliation> avaliations = new List<Avaliation>();
-            //avaliations.Add(new Avaliation(clientDto.Weight, clientDto.Height));
-
-            //ClientDTO client = new ClientDTO
-            //{
-            //    User = new User
-            //    (
-            //        clientDto.Name,
-            //        clientDto.Email,
-            //        "0000-0000",
-            //        "Masculino",//clientDto.Gender,
-            //        DateTime.Now,//clientDto.Born,
-            //        clientDto.Image
-            //     ),
-            //    Avaliations = avaliations,
-            //    DayOfTrains = new List<DayOfTrain>(),
-            //    ClientWorkouts = new List<ClientWorkout>()
-            //};
+        {           
             //realiza o mapeamento da classe DTO para classe command
             var clientCreateCommand = _mapper.Map<ClientCreateCommand>(clientDto);
             //através do tipo de classe command informada o mediator sabe qual handler chamar

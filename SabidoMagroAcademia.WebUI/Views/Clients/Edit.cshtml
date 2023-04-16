@@ -5,7 +5,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" asp-controller="Clients">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -18,6 +19,27 @@
                 <label asp-for="User.Email" class="control-label"></label>
                 <input asp-for="User.Email" class="form-control" />
                 <span asp-validation-for="User.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="User.Fone" class="control-label"></label>
+                <input asp-for="User.Fone" class="form-control" />
+                <span asp-validation-for="User.Fone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="User.Gender" class="col-md-2 control-label"></label>
+                <select asp-for="User.Gender" class="form-control">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+                <span asp-validation-for="User.Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="User.Born" class="col-md-2 control-label"></label>
+                <input asp-for="User.Born" class="form-control" />
+                <span asp-validation-for="User.Born" class="text-danger"></span>
             </div>
 
             <div class="form-group">

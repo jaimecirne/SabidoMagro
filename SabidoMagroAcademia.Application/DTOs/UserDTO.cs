@@ -11,7 +11,7 @@ namespace SabidoMagroAcademia.Application.DTOs
         [StringLength(100, ErrorMessage = "O campo nome deve ter no máximo 100 caracteres.")]
         public string Name { get; set; }
 
-        [DisplayName("E-mail")]
+        [DisplayName("Email")]
         [Required(ErrorMessage = "O campo email é obrigatório.")]
         [EmailAddress(ErrorMessage = "O email informado é inválido.")]
         public string Email { get; set; }
@@ -29,8 +29,8 @@ namespace SabidoMagroAcademia.Application.DTOs
         [DataType(DataType.Date)]
         public DateTime Born { get; set; }
 
-        [DisplayName("Imagem")]
-        [Url(ErrorMessage = "O campo imagem deve ser uma URL válida.")]
+        [DisplayName("URL da Imagem")]
+        [Required(ErrorMessage = "O campo de URL da imagem é obrigatório.")]
         public string Image { get; set; }
     }
 }

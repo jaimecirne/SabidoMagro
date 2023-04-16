@@ -113,10 +113,13 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null) 
+                return NotFound();
+
             var clientDto = await _clientService.GetById(id);
 
-            if (clientDto == null) return NotFound();
+            if (clientDto == null) 
+                return NotFound();
        
             return View(clientDto);
         }
