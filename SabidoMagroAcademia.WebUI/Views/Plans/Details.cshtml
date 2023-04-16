@@ -1,6 +1,6 @@
 ﻿@model SabidoMagroAcademia.Application.DTOs.PlanDTO
 
-<h3>plan Details</h3>
+<h3>Detalhes do Plano</h3>
 
 <div>
     <hr />
@@ -12,9 +12,17 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Preço
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a> |
+    <a asp-action="Index" class="btn">Voltar</a>
 </div>
 

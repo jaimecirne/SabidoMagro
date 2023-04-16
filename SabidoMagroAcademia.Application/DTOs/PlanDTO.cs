@@ -12,5 +12,6 @@ namespace SabidoMagroAcademia.Application.DTOs
         [MaxLength(100)]
         [DisplayName("Nome")]
         public string Name { get; set; }
+        public float Price { get; set; }
     }
 }
