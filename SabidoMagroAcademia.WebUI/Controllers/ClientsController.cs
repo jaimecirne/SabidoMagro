@@ -123,5 +123,18 @@ namespace SabidoMagroAcademia.WebUI.Controllers
        
             return View(clientDto);
         }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GerenciarTreino(int? id) //Gerenciar treino do cliente
+        {
+            if (id == null)
+                return NotFound();
+
+            var productDto = await _clientService.GetById(id);
+
+            if (productDto == null) return NotFound();
+
+            return View(productDto);
+        }
     }
 }

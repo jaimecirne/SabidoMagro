@@ -52,21 +52,54 @@
             <div class="sidebar-heading">
                 Interface
             </div>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Plans" asp-action="Index">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Planos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Clients" asp-action="Index">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Alunos</span>
+                    <span>Gerenciamento de Treinos</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="collapse-item text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Atividades</a>
+                        <a class="collapse-item text-dark" asp-area="" asp-controller="Workouts" asp-action="Index">Treinos</a>
+                        <a class="collapse-item text-dark" asp-area="" asp-controller="WorkoutActivities" asp-action="Index">Treinos e Atividades</a>
+                        <a class="collapse-item text-dark" asp-area="" asp-controller="Avaliations" asp-action="Index">Avaliações</a>
+
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTree"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Configs</span>
+                </a>
+                <div id="collapseTree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item text-dark" asp-area="" asp-controller="Managers" asp-action="Index">Coachs</a>
                         <a class="collapse-item text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        <a class="collapse-item text-dark" asp-area="" asp-controller="Plans" asp-action="Index">Planos</a>
-                        <a class="collapse-item text-dark" asp-area="" asp-controller="Clients" asp-action="Index">Clientes</a>
 
                     </div>
                 </div>

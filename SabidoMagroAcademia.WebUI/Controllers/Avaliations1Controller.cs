@@ -49,8 +49,8 @@ namespace SabidoMagroAcademia.WebUI.Controllers
         // GET: Avaliations1/Create
         public IActionResult Create()
         {
-            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id");
-            ViewData["CoachId"] = new SelectList(_context.Managers, "Id", "Id");
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Label");
+            ViewData["CoachId"] = new SelectList(_context.Managers, "Id", "Label");
             return View();
         }
 
