@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SabidoMagroAcademia.Application.DTOs;
 using SabidoMagroAcademia.Application.Interfaces;
 using SabidoMagroAcademia.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -49,19 +50,27 @@ namespace SabidoMagroAcademia.WebUI.Controllers
         }
 
         public IActionResult Create()
-        {            
+        {
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(UserDTO userDTO)
         {
-            User user = _mapper.Map<User>(userDTO);
 
             if (ModelState.IsValid)
             {
-                ClientDTO clientDTO = new ClientDTO { User = user };
-                await _clientService.Add(clientDTO);
+                try
+                {
+                    User user = _mapper.Map<User>(userDTO);
+                    ClientDTO clientDTO = new ClientDTO { User = user };
+                    await _clientService.Add(clientDTO);
+
+                }
+                catch (Exception e)
+                {
+                    return RedirectToPage("Create", userDTO);
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(userDTO);
@@ -74,7 +83,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
             if (clientDto == null) return NotFound();
 
-            
+
 
             return View(clientDto);
         }
@@ -91,7 +100,7 @@ namespace SabidoMagroAcademia.WebUI.Controllers
         }
 
         //só podem acessar os usuários autenticados e que façam parte desta role
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -113,14 +122,14 @@ namespace SabidoMagroAcademia.WebUI.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null) 
+            if (id == null)
                 return NotFound();
 
             var clientDto = await _clientService.GetById(id);
 
-            if (clientDto == null) 
+            if (clientDto == null)
                 return NotFound();
-       
+
             return View(clientDto);
         }
 
