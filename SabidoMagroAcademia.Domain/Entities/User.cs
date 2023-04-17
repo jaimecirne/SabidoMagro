@@ -5,12 +5,12 @@ namespace SabidoMagroAcademia.Domain.Entities
 {
     public sealed class User : Entity
     {
-        public string Name { get; private set; }
-        public string Email { get; private set; }
-        public string Fone { get; private set; }
-        public string Gender { get; private set; }
-        public DateTime Born { get; private set; }
-        public string Image { get; private set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Fone { get; set; }
+        public string Gender { get; set; }
+        public DateTime Born { get; set; }
+        public string Image { get; set; }
 
         public User()
         {
