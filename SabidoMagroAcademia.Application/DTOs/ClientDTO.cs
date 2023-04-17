@@ -19,5 +19,10 @@ namespace SabidoMagroAcademia.Application.DTOs
         [DisplayName("ClientWorkouts")]
         public List<ClientWorkout> ClientWorkouts { get; set; }
 
+        public ClientDTO()
+        {
+            User = new User();
+        }
+
     }
 }
