@@ -4,16 +4,15 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Avaliar</h1>
 
-<h4>Avaliation</h4>
-<hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Label" class="control-label"></label>
+                <label asp-for="Label" class="control-label">Treino</label>
                 <input asp-for="Label" class="form-control" />
                 <span asp-validation-for="Label" class="text-danger"></span>
             </div>
@@ -28,33 +27,34 @@
                 <span asp-validation-for="Height" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CoachsComments" class="control-label"></label>
+                <label asp-for="CoachsComments" class="control-label">Comentários</label>
                 <input asp-for="CoachsComments" class="form-control" />
                 <span asp-validation-for="CoachsComments" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
+                <label asp-for="Date" class="control-label">Data</label>
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ClientId" class="control-label"></label>
-                <select asp-for="ClientId" class ="form-control" asp-items="ViewBag.ClientId"></select>
+                <label asp-for="ClientId" class="control-label">Cliente</label><br>
+                <select asp-for="ClientId" class="col-md-12" asp-items="ViewBag.ClientId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="CoachId" class="control-label"></label>
-                <select asp-for="CoachId" class ="form-control" asp-items="ViewBag.CoachId"></select>
+                <label asp-for="CoachId" class="control-label">Professor</label>
+                <select asp-for="CoachId" class="col-md-12" asp-items="ViewBag.CoachId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="col-md-offset-2 col-md-10">
+                    <a asp-action="Index" class="btn btn-info">Back to List</a>
+                    <input type="submit" value="Avaliar" class="btn btn-success" />
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -4,34 +4,36 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Avaliações</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" title="Edit" class="btn btn-primary">
+        <span class="fas fa-plus"></span> Avaliar
+    </a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Client)
+                Cliente
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Label)
+                Treino
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Weight)
+               Peso
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Height)
+               Altura
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CoachsComments)
+               Comentário
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Coach)
+               Professor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+               Data
             </th>
             <th></th>
         </tr>

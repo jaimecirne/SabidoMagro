@@ -57,16 +57,17 @@
                             @Html.DisplayFor(modelItem => item.User.Fone)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
-                                <span class="fas fa-edit"> Editar</span>
-                            </a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
+                            <span class="fas fa-edit"></span> Editar
+                        </a>
 
-                            <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
-                                <span class="fas fa-search"> Detalhes</span>
-                            </a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
-                                <span class="fas fa-trash-alt"> Deletar</span>
-                            </a>
+                        <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
+                            <span class="fas fa-search"></span> Detalhes
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
+                            <span class="fas fa-trash-alt"></span> Excluir
+                        </a>
                         </td>
                     </tr>
                 }
