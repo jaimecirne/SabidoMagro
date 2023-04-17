@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SabidoMagroAcademia.Application.DTOs.PlanDTO>
 
 @{
-    ViewData["Title"] = "Planos";
+    ViewData["Title"] = "Gerenciamento de Planos";
 }
 
 <div>
@@ -13,7 +13,7 @@
         <div>
             <div class="pull-left">
                 <a asp-action="Create" class="btn btn-primary">
-                    <span title="Registrar novo plano" class="fas fa-plus"></span> Registrar novo plano
+                    <span title="Register New" class="fas fa-plus"></span> Novo Plano
                 </a>
             </div>
         </div>
@@ -27,7 +27,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
-                <th></th>
+                <th>
+                    Preço
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -38,16 +40,19 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
                         <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
-                            <span class="fas fa-edit"></span>Editar
+                            <span class="fas fa-edit">Editar</span>
                         </a>
 
                         <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
-                            <span class="fas fa-search"></span>Detalhes
+                            <span class="fas fa-search">Detalhes</span>
                         </a>
 
                         <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
-                            <span class="fas fa-trash-alt"></span>Excluir
+                            <span class="fas fa-trash-alt">Apagar</span>
                         </a>
                     </td>
                 </tr>

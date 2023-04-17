@@ -1,6 +1,6 @@
 ﻿@model SabidoMagroAcademia.Application.DTOs.PlanDTO
 
-<h3>Editar plano</h3>
+<h3>Editar Plano</h3>
 
 <hr />
 
@@ -12,13 +12,18 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <a asp-action="Index" class="btn btn-danger">
-                    <span class="fas fa-trash-alt"></span> Cancelar
-                </a>
-                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <label asp-for="Price" class="control-label">Preço</label>
+                <input asp-for="Price" type="number" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn">Voltar</a>
             </div>
         </form>
-
     </div>
 </div>
+
