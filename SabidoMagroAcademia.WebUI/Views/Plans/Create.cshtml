@@ -1,7 +1,7 @@
 ﻿@model SabidoMagroAcademia.Application.DTOs.PlanDTO
 
 @{
-    ViewData["Title"] = "Register new plan";
+    ViewData["Title"] = "Cadastrar novo plano";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -21,8 +21,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                <a asp-action="Index" class="btn btn-danger">Cancelar</a>
                 <input type="submit" value="Create" class="btn btn-success" />
-                <a asp-action="Index" class="btn btn-info">Back to List</a>
             </div>
         </div>
     </div>
