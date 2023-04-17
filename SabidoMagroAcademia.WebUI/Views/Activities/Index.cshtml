@@ -3,30 +3,33 @@
 @{
     ViewData["Title"] = "Atividades";
 }
-<h1>Index</h1>
+<h1>Exercícios</h1>
 
-<a asp-action="Create"><p>Nova Atividade</p></a>
+<a asp-action="Create" class="btn btn-primary">
+    <span title="Registrar novo plano" class="fas fa-plus"></span> Novo exercício
+</a>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Label)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Label)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhe</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Label)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
+                        <span class="fas fa-edit"></span>Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
+                        <span class="fas fa-search"></span>Detalhes
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
+                        <span class="fas fa-trash-alt"></span>Excluir
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

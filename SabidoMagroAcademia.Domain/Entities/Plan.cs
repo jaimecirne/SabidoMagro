@@ -10,32 +10,32 @@ namespace SabidoMagroAcademia.Domain.Entities
     public sealed class Plan : Entity
     {
         public string Name { get; private set; }
-        public double Price { get; set; }
+        public float Price { get; set; }
 
         public Plan()
         {
 
         }
 
-        public Plan(string name, double price )
+        public Plan(string name, float price )
         {
             ValidateDomain(name, price);
         }
 
-        public Plan(int id, string name, double price)
+        public Plan(int id, string name, float price)
         {
             DomainExceptionValidation.When(id < 0, "Invalid Id value.");
             Id = id;
             ValidateDomain(name, price);
         }
 
-        public void Update(string name, double price)
+        public void Update(string name, float price)
         {
             ValidateDomain(name, price);
         }
         public ICollection<Client> Clients { get; set; }
 
-        private void ValidateDomain(string name, double price)
+        private void ValidateDomain(string name, float price)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(name),
                 "Invalid name.Name is required");
